@@ -50,11 +50,9 @@ View(dados_incompletos)
 
 #boxplot por variável
 nomes <- names(dados_completos)
-for(i in seq_along(dados_completos)){
-  if(is.numeric(dados_completos[,i])){
-    boxplot(dados_completos[,i], main = nomes[i])
-  }
-}
+lapply(nomes, function(x){
+  if(is.numeric(unlist(dados[x]))){
+    boxplot(dados[x],main = x)}})
 
 #remove nomes e o iterador da memoria
 rm(nomes, i)
